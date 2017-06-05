@@ -1,6 +1,6 @@
 1.Update & upgrade
-# apt-get update
-# apt-get upgrade
+# apt-get update     ->更新
+# apt-get upgrade    ->升级
 
 2.Install JDK
 # apt-get install software-properties-common
