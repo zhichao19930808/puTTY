@@ -1,0 +1,5 @@
+~# apt-get install lynx      安装lynx
+
+安装完成后使用lynx命令访问 必应 网站  测试，练习
+
+~# lynx bing.com
