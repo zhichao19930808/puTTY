@@ -1,0 +1,5 @@
+# wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.78/bin/apache-tomcat-7.0.78.tar.gz          -->在网页上下载Tomcat
+# tar xvf apache-tomcat-7.0.78.tar.gz                                                  -->将下载好的文件解压缩
+# cd apache-tomcat-7.0.78/bin                                                          -->进入bin目录下
+# ./startup.sh                                                                         --启动该程序
+打开浏览器输入：服务器ip地址 + :8080 就可以访问你的服务器了
