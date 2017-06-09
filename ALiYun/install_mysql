@@ -1,0 +1,46 @@
+1.Update & upgrade
+    # apt-get update     ->更新
+    # apt-get upgrade    ->升级
+2，# apt-get install mysql-server     ->安装mysql
+        弹框{
+            1，输入密码
+            2，按tab跳转到ok键，按Enter键确认
+            3，再次输入密码并确认
+        }
+3，# mysql -u root -p      ->登陆mysql
+        password：输入上面设置的密码进入mysql
+
+    # show databases;   ->显示数据库列表
+    # show variables like 'char%';  ->模糊查询系统变量 char
+
+    通过查询系统变量可发现编码方式都是latin1，这个方式将来如果使用中文会出现乱码，所以要将其更改为utf8的格式
+
+    # nano（或vi）/ect/mysql/my.cnf      ->更改nano命令（文本编辑器），etc（根目录），下面的mysql下面的my。cnf
+      将以下编码方式复制到以上文件中，按ctrl+o保存，ctrl+x退出 ；
+      --------
+            [client]
+            default-character-set=UTF8
+
+            [mysql]
+            default-character-set=UTF8
+
+            [mysqld]
+            character-set-client-handshake = false #force encoding to uft8
+            character-set-server=UTF8
+            collation-server=UTF8_general_ci
+
+            [mysqld_safe]
+            default-character-set=UTF8
+      ----------
+4.重启mysql
+    # service mysql stop    ->停止mysql
+    # service mysql start   ->开始mysql
+    # mysql -u root -p      ->再次登陆mysql
+    # show variables like 'char%'       ->查询变量
+    # show variables like 'coll%'
+
+     可发现编码方式已变为了utf8
+5.上传一个数据库到mysql中
+    # quit   ->退出当前数据库
+    # nano jianshu.sql
+    。。。
