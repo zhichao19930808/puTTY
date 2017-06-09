@@ -41,6 +41,11 @@
 
      可发现编码方式已变为了utf8
 5.上传一个数据库到mysql中
-    # quit   ->退出当前数据库
-    # nano jianshu.sql
-    。。。
+    打开WinSCP，在root目录下新建一个mysql文件夹，找到一个mysql文档,复制到桌面，然后从桌面托到刚刚创建的mysql目录下；
+    # mysql -u root -p      ->登陆mysql
+    # source /root/mysql/db.sql(文件名)  ->上传成功
+    # use db.sql;
+    # show tables;
+    # select * from user;
+    发现数据库已经上传到了mysql中；
+
