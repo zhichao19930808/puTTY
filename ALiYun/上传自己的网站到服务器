@@ -1,0 +1,23 @@
+上传数据库-------------------------------------------------------------------------
+# ls
+# cd mysql
+# ls            -->可看到之前导入到root目录下mysql目录下的一个叫db.sql的数据库
+
+# mysql -u root -p          -->进入mysql
+# source /root/mysql/db.sql         -->执行数据库
+# show databases;           -->可查看数据库 db_javaee 已存在
+# quit
+------------------------------------------------------------------
+# cd apache-tomcat-7.0.78/webapps/
+# cd ROOT               -->（注意区分大小写）
+# ls                    -->可看到其中的一些图片和jsp文件，其中包括index.jsp文件
+# cd..                  -->退出到上级目录
+
+# rm /rf ROOT/          -->删除掉ROOT文件夹（高危操作，无法找回；如果rm /rf /会清空系统 ）
+或
+# mv ROOT/RROOt         -->将ROOT文件夹改名
+
+# mkdir ROOT            -->创建一个ROOT目录
+
+找到idea build目录下的libs《exploded《JavaEE-1.0-SNASHOT.war右击，选择show in explorer找到文件的位置
+将该文件传到ROOT目录下
