@@ -1,0 +1,52 @@
+1.从官网下载MySQL并安装（时间有些长，找个网速好的地方耐心等待）
+#wget http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+#rpm -ivh mysql-community-release-el7-5.noarch.rpm
+#yum install mysql-community-server
+
+2.成功安装之后重启mysql服务 （根据电脑的性能，需等待一小会）
+service mysqld restart
+
+3.初次安装mysql是root账户是没有密码的
+设置密码的方法
+
+mysql -u root -p
+mysql> set password for root@localhost=password('密码');
+mysql> exit
+
+搞定！
+4.修改mysql的 /etc/my.cnf 文件中的字符集键值
+    4.1 进入到ezc目录
+        # cd etc
+    4.2 修改my.cnf文件，在[mysqld]字段里加入 character-set-server=utf8
+        示例：
+            [mysqld]
+            port = 3306
+            socket = /var/lib/mysql/mysql.sock
+            character-set-server=utf8
+        # vim my.cnf
+    4.3 输入：#sudo systemctl restart mysqld 重启mysql服务就生效。
+    4.4 进入到MySQL界面，可看到字符编码已经修改成功
+    mysql>show variables like ‘character%’;查询字符编码
+
+
+
+
+
+5.授权MySQL，允许远程用户登录访问MySQL
+从任何主机上使用root用户，密码：youpassword（你的root密码）连接到mysql服务器：
+# mysql -u root -proot
+mysql>GRANT ALL PRIVILEGES ON . TO ‘root’@’%’ IDENTIFIED BY ‘youpassword’ WITH GRANT OPTION;
+
+操作完后切记执行以下命令刷新权限
+FLUSH PRIVILEGES;
+exit;
+
+6.数据库导入：
+mysql -uroot -p test < /www/web/test/test.sql
+
+7.数据库导出：
+(1) 将数据库 test 导出到/www/web/test/test.sql
+[root@test ~]# mysqldump -uroot -p test > /www/web/test/test.sql
+
+(2) 将数据库 test 中的 user 数据表 导出到 /www/web/test/user.sql
+[root@test ~]# mysqldump -uroot -p test user < /www/web/test/user.sql
